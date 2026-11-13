@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PRETTYMUCH: a career in data</title>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F5F1FF;--ink:#1D1545;--mute:#6B6390;--card:#fff;--line:#DCD3F5;--pink:#FF4F9A;--sky:#2FA8F0;--sun:#F7C531;--off:#E4DDF7;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#150F33;--ink:#F3EEFF;--mute:#A79FCB;--card:#1F1847;--line:#352C66;--off:#2B2358}}
+:root[data-theme="dark"]{--bg:#150F33;--ink:#F3EEFF;--mute:#A79FCB;--card:#1F1847;--line:#352C66;--off:#2B2358}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 "DM Sans",system-ui,sans-serif}
+main{max-width:980px;margin:0 auto;padding:28px 18px 60px}
+h1,h2{font-family:"Bagel Fat One","DM Sans",system-ui,sans-serif;font-weight:400;margin:0;letter-spacing:.01em}
+h1{font-size:clamp(44px,10vw,92px);line-height:.95}
+h2{font-size:26px;margin-bottom:6px}
+.sub{color:var(--mute);max-width:60ch;margin:12px 0 0}
+section{margin-top:44px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px}
+.lineup{display:flex;gap:14px;flex-wrap:wrap;margin:22px 0 6px}
+.m{width:76px;text-align:center;font-size:13px;color:var(--mute);transition:opacity .35s}
+.m i{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 6px;border-radius:50%;font:400 22px "Bagel Fat One",sans-serif;font-style:normal;color:#fff;transition:background .35s,transform .35s}
+.m.off{opacity:.45}.m.off i{background:var(--off)!important;color:var(--mute);transform:scale(.86)}
+button.m{all:unset;cursor:pointer;box-sizing:border-box;width:76px;text-align:center;font-size:13px;color:var(--mute);transition:opacity .35s}
+button.m:focus-visible{outline:3px solid var(--sky);outline-offset:4px;border-radius:12px}
+button.m[aria-expanded=true] i{box-shadow:0 0 0 3px var(--bg),0 0 0 6px var(--ink)}
+button.m[aria-expanded=true]{color:var(--ink);font-weight:700}
+.bio{margin-top:14px;border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:15px}
+.bio h3{margin:0 0 2px;font:400 22px "Bagel Fat One",sans-serif}
+.bio .meta{color:var(--mute);font-size:14px;margin:0 0 8px}
+.bio p{margin:6px 0;max-width:64ch}
+.bio .st{display:inline-block;padding:2px 10px;border-radius:99px;background:var(--off);font-size:13px;font-weight:700}
+.scrub{margin-top:18px}
+input[type=range]{width:100%;accent-color:var(--pink);height:32px}
+.yrs{display:flex;justify-content:space-between;font-size:13px;color:var(--mute)}
+.yrs button{all:unset;cursor:pointer;padding:4px 6px;border-radius:8px}
+.yrs button[aria-pressed=true]{background:var(--pink);color:#fff;font-weight:700}
+.yrs button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:18px}
+.stat{border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.stat b{display:block;font:400 34px/1.1 "Bagel Fat One",sans-serif}
+.stat span{font-size:13px;color:var(--mute)}
+#note{margin:16px 0 0;font-size:17px;min-height:3.2em}
+.era{display:inline-block;padding:3px 12px;border-radius:99px;background:var(--sun);color:#1D1545;font-weight:700;font-size:14px}
+.chartwrap{overflow-x:auto}
+svg text{font-family:"DM Sans",sans-serif;fill:var(--mute);font-size:12px}
+.legend{display:flex;gap:16px;font-size:13px;color:var(--mute);margin-top:6px;flex-wrap:wrap}
+.legend span::before{content:"";display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;background:var(--c)}
+.tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:12px 0}
+select{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 10px}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:520px}
+th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line)}
+th{font-weight:700;color:var(--mute);font-size:13px}
+.t{display:inline-block;padding:1px 9px;border-radius:99px;font-size:12px;font-weight:700;color:#fff}
+.t.single{background:var(--sky)}.t.EP{background:var(--pink)}.t.album{background:#7A4DF0}
+.bar{display:grid;grid-template-columns:150px 1fr 24px;gap:10px;align-items:center;font-size:14px;margin:5px 0}
+.bar i{display:block;height:12px;border-radius:6px;background:var(--pink)}
+.fine{font-size:13px;color:var(--mute);margin-top:30px;max-width:70ch}
+.collab{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.collab span{border:1px solid var(--line);border-radius:99px;padding:4px 12px;font-size:14px}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <h1>PRETTYMUCH</h1>
+  <p class="sub">From Simon Cowell’s boy band lab in 2016 to the Instagram goodbye on October 29, 2023. Drag through the years to see who was in the group, what came out, and which label era it was.</p>
+</header>
+
+<section aria-labelledby="h-scrub">
+  <div class="card">
+    <h2 id="h-scrub">Year by year</h2>
+    <div class="lineup" id="lineup"></div>
+    <div class="bio" id="bio" aria-live="polite"></div>
+    <div class="scrub">
+      <input type="range" id="yr" min="2016" max="2023" value="2017" aria-label="Year">
+      <div class="yrs" id="yrs"></div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="s-mem">5</b><span>members at year end</span></div>
+      <div class="stat"><b id="s-yr">0</b><span>releases that year</span></div>
+      <div class="stat"><b id="s-cum">0</b><span>releases so far</span></div>
+    </div>
+    <p id="note"></p>
+  </div>
+</section>
+
+<section aria-labelledby="h-rel">
+  <h2 id="h-rel">Release rhythm</h2>
+  <p class="sub">Releases per year from the catalogue below. 2020 is empty: no new music that year while Syco shut down and the band moved to Sire.</p>
+  <div class="card chartwrap" style="margin-top:14px"><div id="chart"></div>
+    <div class="legend"><span style="--c:var(--sky)">Single</span><span style="--c:var(--pink)">EP</span><span style="--c:#7A4DF0">Album</span></div></div>
+</section>
+
+<section aria-labelledby="h-cat">
+  <h2 id="h-cat">Catalogue</h2>
+  <p class="sub" id="tot"></p>
+  <div class="tools"><label for="f">Show</label>
+    <select id="f"><option value="all">All years</option><option value="upto">Up to selected year</option><option value="only">Selected year only</option></select>
+    <label for="g">Type</label>
+    <select id="g"><option value="all">All types</option><option>single</option><option>EP</option><option>album</option></select></div>
+  <div class="card tw"><table><thead><tr><th>Year</th><th>Title</th><th>Type</th><th>Guest or note</th></tr></thead><tbody id="rows"></tbody></table></div>
+</section>
+
+<section aria-labelledby="h-vid">
+  <h2 id="h-vid">Music videos</h2>
+  <p class="sub">Who directed them. In 2023 the band took over the camera.</p>
+  <div class="card" id="dirs" style="margin-top:14px"></div>
+  <div class="card tw" style="margin-top:12px"><table><thead><tr><th>Year</th><th>Video</th><th>Director</th></tr></thead><tbody id="vids"></tbody></table></div>
+</section>
+
+<section aria-labelledby="h-live">
+  <h2 id="h-live">Tours and TV</h2>
+  <div class="card tw" style="margin-top:14px"><table><thead><tr><th>Year</th><th>Event</th><th>Detail</th></tr></thead><tbody id="live"></tbody></table></div>
+</section>
+
+<section aria-labelledby="h-awd">
+  <h2 id="h-awd">Awards</h2>
+  <p class="sub">Six nominations and no wins listed.</p>
+  <div class="card tw" style="margin-top:14px"><table><thead><tr><th>Year</th><th>Award</th><th>Category</th></tr></thead><tbody id="awd"></tbody></table></div>
+</section>
+
+<section aria-labelledby="h-col">
+  <h2 id="h-col">Who they worked with</h2>
+  <div class="collab" id="collab"></div>
+</section>
+
+<p class="fine">Built from Wikipedia’s discography, plus Qobuz, Last.fm, MTV, BroadwayWorld and Billboard-sourced coverage. Wikipedia’s summary box says 25 singles and 23 videos, but its tables list more than that, so this page follows the tables. Some dates are only given as a month or year in the sources. Director credits for “Blind,” “Phases” and “Lying” follow the grouping in the source table. Chart columns in the source were unclear, so only peaks stated in prose are shown. No streaming data is included because I could not verify any.</p>
+</main>
+
+<script>
+const members=[
+ {n:"Austin Porter",i:"AP",c:"#FF4F9A",end:2023},
+ {n:"Brandon Arreaga",i:"BA",c:"#2FA8F0",end:2023},
+ {n:"Edwin Honoret",i:"EH",c:"#F7A11F",end:2023},
+ {n:"Nick Mara",i:"NM",c:"#7A4DF0",end:2022},
+ {n:"Zion Kuwonu",i:"ZK",c:"#1FB88A",end:2023}];
+const rel=[
+ [2017,"Would You Mind","single","Debut single, July. Written by Savan Kotecha and Jacob Kasher; reached the top 40 of Billboard’s Mainstream Top 40"],
+ [2017,"Teacher","single","October; its video drew comparisons to Dead Obies’ “Where They @”"],
+ [2017,"Open Arms","single","October 27"],
+ [2017,"No More","single","feat. French Montana; performed on the UK X Factor final"],
+ [2018,"PrettyMuch So Far…","EP","March 23"],
+ [2018,"10,000 Hours","single","From PRETTYMUCH an EP"],
+ [2018,"Hello","single","From PRETTYMUCH an EP"],
+ [2018,"Healthy","single","From PRETTYMUCH an EP"],
+ [2018,"On My Way","single","From PRETTYMUCH an EP"],
+ [2018,"PRETTYMUCH an EP","EP","April 19, Syco"],
+ [2018,"Summer on You","single","June 21. Written by Ed Sheeran, produced by Steve Mac; top 50 on Pop radio"],
+ [2018,"Solita","single","September 28, feat. Rich the Kid"],
+ [2018,"Real Friends","single","October 17, released to promote the Funktion Tour"],
+ [2018,"Jello","single","December 14"],
+ [2019,"Blind","single","January 25"],
+ [2019,"Phases","single","April 26; video features model Justine Mae Biticon"],
+ [2019,"Gone 2 Long","single","May 20. Written and produced entirely by Brandon Arreaga"],
+ [2019,"Phases - EP","EP","May 24. Six songs, incl. “Eyes Off You,” “Temporary Heart,” “4U” and “One Shot”"],
+ [2019,"Eyes Off You","single","From Phases - EP"],
+ [2019,"Lying","single","July 19, feat. Lil Tjay"],
+ [2019,"Rock Witchu","single",""],
+ [2019,"Me Necesita","single","with CNCO"],
+ [2019,"Up to You","single","with NCT Dream"],
+ [2019,"INTL:EP","EP","November 22. Guests: CNCO, NCT Dream, Luísa Sonza, Iñigo Pascual"],
+ [2021,"Stars","single","January 22, first release after the label change"],
+ [2021,"Smackables","EP","January 29, first on Sire Records"],
+ [2021,"Lonely","single","From the Smackables deluxe edition"],
+ [2021,"Smackables (Deluxe Edition)","EP","February 26. Adds “Corpus Christi” and the title track"],
+ [2021,"Trust","single","July 30; video edited by Brandon Arreaga"],
+ [2021,"I Don’t Wanna Leave","single","feat. Jeremih"],
+ [2022,"Talking 2 You","single",""],
+ [2022,"H2L","single","October 7, on Sound.xyz. First release as a four-piece (not in the source’s singles table)"],
+ [2023,"Same Place","single","Early 2023, independent"],
+ [2023,"Wrong?","single","Early 2023"],
+ [2023,"Excited","single","Released March 31 with “Maria”"],
+ [2023,"Maria","single","Released March 31 with “Excited”"],
+ [2023,"Alone","single",""],
+ [2023,"Before You","single","with angelbaby"],
+ [2023,"This Thing Called Love","album","May 26. Debut album"]];
+const vid=[[2017,"Would You Mind","Emil Nava"],[2017,"Teacher","Noah Duran"],[2017,"Open Arms","Noah Duran"],[2017,"No More","Emil Nava"],[2018,"10,000 Hours","Noah Duran"],[2018,"Hello","Noah Duran"],[2018,"Summer on You","Tim Mattia"],[2018,"Jello","The Young Astronauts"],[2019,"Blind","The Young Astronauts"],[2019,"Phases","The Young Astronauts"],[2019,"Lying","The Young Astronauts"],[2019,"Me Necesita","Isaac Rentz"],[2019,"The Weekend (feat. Luísa Sonza)","Isaac Rentz"],[2019,"Love (feat. Iñigo Pascual)","Isaac Rentz"],[2021,"Stars","Natalie Fält"],[2021,"Parking Spot","Steven Mertens"],[2021,"Free","Keenan O’Reilly"],[2021,"Lonely","Natalie Fält"],[2021,"Smackables","Ian Eastwood"],[2021,"Corpus Christi","Boni Mata"],[2021,"Trust","Ian Eastwood"],[2021,"I Don’t Wanna Leave","Lucas Chemotti"],[2023,"Same Place","Brandon Arreaga"],[2023,"Excited","Brandon Arreaga"],[2023,"Alone","Brandon Arreaga"]];
+const live=[[2017,"Teen Choice Awards","Performed “Would You Mind” (August)"],[2017,"MTV VMAs red carpet","Sang “Would You Mind” a cappella"],[2017,"Jack & Jack Tour","Opening act"],[2017,"MTV’s TRL","Performed “Would You Mind” (October)"],[2017,"The X Factor UK final","Performed “No More”"],[2018,"Good Morning America","Performed on January 15"],[2018,"MTV’s TRL","Performed “Open Arms” and “No More” on January 17"],[2018,"PRETTYMUCH Everywhere Tour","Headlining US tour"],[2018,"Roxy Tour","Opening act"],[2018,"The Late Late Show with James Corden","Performed “Summer on You”"],[2018,"MTV VMAs","Push Artist Stage, August 20"],[2018,"Funktion Tour","Headlining fall tour"],[2019,"FOMO Tour","Headlining; opened July 11 in Dallas with Kenzie Ziegler"],[2020,"Camila Cabello’s The Romance Tour","Announced as opener for select US dates; tour cancelled due to COVID-19"],[2021,"Smackables release party","Online, hosted by Moment House, March 4–5"],[2021,"Good Morning America","Performed “Stars” on March 16"]];
+const awd=[[2018,"iHeartRadio Music Awards","Best Boyband"],[2018,"MTV Video Music Awards","Push Artist of the Year"],[2018,"MTV Europe Music Awards","Best Push"],[2018,"MTV Europe Music Awards","Best Group"],[2019,"Teen Choice Awards","Choice Music Group"],[2019,"MTV Video Music Awards","Best Group"]];
+const notes={
+ 2016:["Syco era","Simon Cowell and Syco president Sonny Takhar merge five solo artists into one group. They move into a shared Los Angeles house on March 18 to work on dancing and record a debut EP."],
+ 2017:["Syco era","“Would You Mind” arrives in July, followed by “Teacher,” “Open Arms” and “No More.” Performances at the Teen Choice Awards, TRL and the UK X Factor final, plus an opening slot on the Jack & Jack Tour."],
+ 2018:["Syco era","Two EPs, ten releases, the Everywhere and Funktion tours, a Late Late Show spot, and nominations at the iHeartRadio, MTV VMA and MTV EMA awards."],
+ 2019:["Syco era","Ten releases including the Phases and INTL:EP projects, collabs with Lil Tjay, CNCO and NCT Dream, the FOMO Tour, and VMA and Teen Choice nominations."],
+ 2020:["Label change","No new music. Syco Music is dissolved, a planned Camila Cabello tour slot is cancelled by COVID-19, and the band signs to Sire Records in December."],
+ 2021:["Sire era","A comeback billed as “PRETTYMUCH 2.0”: “Stars” on January 22, the Smackables EP a week later, its deluxe edition in February, then “Trust” in July."],
+ 2022:["Independent","Nick Mara leaves on October 7. The remaining four release “H2L” on Sound.xyz."],
+ 2023:["Independent","Self-directed videos, the debut album This Thing Called Love on May 26, and on October 29 an Instagram post announcing the group is disbanding."]};
+const bios={
+ AP:{born:"August 14, 1997 · Charlotte, North Carolina",role:"The one with a solo past",txt:["Austin released a pop album, One Love, in 2013, and made an unreleased rap EP before Cowell’s team found him. He had also toured with Aaron Carter.","He cites Elton John, James Taylor, Chicago and The Beatles as influences, along with lo-fi hip-hop and jazz."]},
+ BA:{born:"December 14, 1999 · Corinth, Texas",role:"The writer, producer and editor",txt:["Brandon started acting and modeling around age 11 and used the money to build a home studio, which he rented to local musicians. He was the last to join, because his parents first thought the scouting was fake.","He became the group’s most hands-on creator: he wrote and produced “Gone 2 Long” by himself, co-wrote “Corpus Christi,” and edited the video for “Trust.” In 2023 he directed the videos for “Same Place,” “Excited” and “Alone.”"]},
+ EH:{born:"February 12, 1999 · The Bronx, New York",role:"The Instagram cover singer",txt:["Edwin built an audience singing cover songs on Instagram before joining. He is Dominican and from the Bronx, and once tweeted that Cardi B and the group should collaborate for that reason."]},
+ NM:{born:"November 8, 1997 · born in New York, raised in New Jersey",role:"The dancer",txt:["Nick began dancing around age nine and was part of the ICONic Boyz crew on America’s Best Dance Crew. He was often called the most fleet-footed of the five. He describes his taste as “Bad Boy-era” music and cites The Notorious B.I.G. as an inspiration.","He left on October 7, 2022 to pursue a solo career, and the remaining four continued as a quartet."]},
+ ZK:{born:"June 29, 1999 · Ottawa, Canada",role:"The Canadian",txt:["Zion was the only member not originally from the US. He was inspired to sing by the film Justin Bieber: Never Say Never, posted covers on Vine and was noticed by Sony Music; he also built a following with dance videos on Instagram."]}};
+let sel=null;
+const types=["single","EP","album"],col={single:"var(--sky)",EP:"var(--pink)",album:"#7A4DF0"};
+const $=id=>document.getElementById(id);
+const yearsList=[2016,2017,2018,2019,2020,2021,2022,2023];
+const count=y=>rel.filter(r=>r[0]===y).length;
+$("yrs").innerHTML=yearsList.map(y=>`<button data-y="${y}" aria-pressed="false">${y}</button>`).join("");
+$("yrs").onclick=e=>{const b=e.target.closest("button");if(b){$("yr").value=b.dataset.y;update()}};
+$("yr").oninput=update;$("f").onchange=table;$("g").onchange=table;
+
+function chart(sel){
+ const W=640,H=250,pl=30,pb=26,pt=10,bw=40,gap=(W-pl-bw*8)/8,max=Math.max(...yearsList.map(count),1);
+ const sh=v=>(H-pb-pt)*v/max;let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" style="min-width:520px" role="img" aria-label="Releases per year">`;
+ for(let t=0;t<=max;t+=4){const y=H-pb-sh(t);s+=`<line x1="${pl}" x2="${W}" y1="${y}" y2="${y}" stroke="var(--line)"/><text x="0" y="${y+4}">${t}</text>`}
+ yearsList.forEach((y,k)=>{const x=pl+gap/2+k*(bw+gap);let yy=H-pb;
+  types.forEach(t=>{const n=rel.filter(r=>r[0]===y&&r[2]===t).length;if(n){const h=sh(n);yy-=h;s+=`<rect x="${x}" y="${yy}" width="${bw}" height="${h}" rx="4" fill="${col[t]}" opacity="${y===sel?1:.45}"/>`}});
+  if(!count(y))s+=`<text x="${x+bw/2}" y="${H-pb-6}" text-anchor="middle">none</text>`;
+  s+=`<text x="${x+bw/2}" y="${H-8}" text-anchor="middle" ${y===sel?'style="fill:var(--ink);font-weight:700"':''}>${y}</text>`});
+ return s+"</svg>"}
+
+function table(){
+ const y=+$("yr").value,f=$("f").value,g=$("g").value;
+ const list=rel.filter(r=>(f==="all"||(f==="upto"&&r[0]<=y)||(f==="only"&&r[0]===y))&&(g==="all"||r[2]===g));
+ $("rows").innerHTML=list.length?list.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td><span class="t ${r[2]}">${r[2]}</span></td><td>${r[3]}</td></tr>`).join(""):`<tr><td colspan="4">Nothing matches. Try “All years” or “All types”.</td></tr>`}
+
+$("lineup").onclick=e=>{const b=e.target.closest("button");if(!b)return;sel=sel===b.dataset.i?null:b.dataset.i;update()};
+function showBio(y){
+ if(!sel){$("bio").innerHTML='<span class="meta">Select a member to read their bio.</span>';return}
+ const m=members.find(x=>x.i===sel),b=bios[sel],active=y<2023&&y<=m.end;
+ const st=y===2023&&sel!=="NM"?"Group disbanded October 29, 2023":active?"In the group in "+y:m.i==="NM"?"Left the group in October 2022":"";
+ $("bio").innerHTML=`<h3>${m.n}</h3><p class="meta">${b.role}. Born ${b.born}</p>${b.txt.map(t=>"<p>"+t+"</p>").join("")}${st?'<span class="st">'+st+'</span>':""}`}
+function update(){
+ const y=+$("yr").value;
+ $("lineup").innerHTML=members.map(m=>{const active=y<2023&&y<=m.end;return `<button class="m${active?"":" off"}" data-i="${m.i}" aria-expanded="${sel===m.i}" aria-label="${m.n}, show bio"><i style="background:${m.c}">${m.i}</i>${m.n.split(" ")[0]}</button>`}).join("");
+ showBio(y);
+ const n=members.filter(m=>y<2023&&y<=m.end).length;
+ $("s-mem").textContent=n;$("s-yr").textContent=count(y);$("s-cum").textContent=rel.filter(r=>r[0]<=y).length;
+ const [era,txt]=notes[y];$("note").innerHTML=`<span class="era">${era}</span> ${txt}`;
+ document.querySelectorAll("#yrs button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.y==y));
+ $("chart").innerHTML=chart(y);table()}
+$("collab").innerHTML=[["French Montana","No More, 2017"],["Rich the Kid","Solita, 2018"],["Lil Tjay","Lying, 2019"],["CNCO","Me Necesita, 2019"],["NCT Dream","Up to You, 2019"],["Luísa Sonza","The Weekend, 2019"],["Iñigo Pascual","Love, 2019"],["Jeremih","I Don’t Wanna Leave, 2021"],["angelbaby","Before You, 2023"]].map(c=>`<span><b>${c[0]}</b> ${c[1]}</span>`).join("");
+const rows=(id,a)=>$(id).innerHTML=a.map(r=>"<tr>"+r.map(c=>"<td>"+c+"</td>").join("")+"</tr>").join("");
+rows("vids",vid);rows("live",live);rows("awd",awd);
+const dc={};vid.forEach(v=>dc[v[2]]=(dc[v[2]]||0)+1);
+const dmax=Math.max(...Object.values(dc));
+$("dirs").innerHTML=Object.entries(dc).sort((a,b)=>b[1]-a[1]).map(([n,c])=>`<div class="bar"><span>${n}</span><i style="width:${c/dmax*100}%"></i><b>${c}</b></div>`).join("");
+const ct=t=>rel.filter(r=>r[2]===t).length;
+$("tot").textContent=`${ct("single")} singles, ${ct("EP")} EPs (counting the Smackables deluxe edition) and ${ct("album")} album, all in order.`;
+update();
+</script>
+</body>
+</html>
